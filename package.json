@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "coveralls": "^2.11.3",
+    "coveralls": "^3.0.3",
     "istanbul-harmony": "^0.3.16",
     "jshint": "^2.8.0",
     "koa": "^2.7.0",
