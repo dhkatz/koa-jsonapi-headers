@@ -1,15 +1,35 @@
 {
   "name": "koa-jsonapi-headers",
-  "version": "1.1.3",
+  "version": "0.0.1",
   "description": "KoaJS Validate JSON-API Request Headers Middleware",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rudijs/koa-jsonapi-headers.git"
+    "url": "https://github.com/dhkatz/koa-jsonapi-headers.git"
   },
-  "main": "./lib/koa-jsonapi-headers.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "NODE_ENV=test node --harmony node_modules/istanbul-harmony/lib/cli.js cover node_modules/mocha/bin/_mocha --root lib/ --dir test/coverage  -- -u exports -R spec",
-    "coveralls": "NODE_ENV=test node --harmony node_modules/istanbul-harmony/lib/cli.js cover node_modules/mocha/bin/_mocha --root lib/ --dir test/coverage  -- -u exports -R spec && cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "jest --verbose --forceExit --detectOpenHandles",
+    "build": "gulp",
+    "prepublishOnly": "gulp build",
+    "coveralls": "jest --coverage --ci --verbose --forceExit --detectOpenHandles && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/test/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
   "keywords": [
     "koa",
@@ -17,22 +37,28 @@
     "jsonapi"
   ],
   "author": {
-    "name": "Rudi Starcevic",
-    "email": "ooly.me@gmail.com"
+    "name": "David Katz",
+    "email": "dhkatz.16@gmail.com"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=0.11.16",
-    "iojs": ">=1.0.0"
-  },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "coveralls": "^2.11.3",
-    "istanbul-harmony": "^0.3.16",
-    "jshint": "^2.8.0",
-    "koa": "^0.21.0",
-    "mocha": "^2.2.5",
-    "sinon": "^1.15.4",
-    "supertest": "^0.15.0"
+    "@types/jest": "^24.0.11",
+    "@types/koa": "^2.0.48",
+    "@types/supertest": "^2.0.7",
+    "coveralls": "^3.0.3",
+    "del": "^4.1.0",
+    "gulp": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-tslint": "^8.1.4",
+    "gulp-typescript": "^5.0.1",
+    "jest": "^24.7.1",
+    "koa": "^2.7.0",
+    "merge2": "^1.2.3",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.0.1",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.4.1"
   }
 }
