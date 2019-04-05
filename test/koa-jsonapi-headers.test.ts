@@ -8,6 +8,7 @@ import koa = require('koa');
 describe('koa-jsonapi-headers.test.js', () => {
   describe('reject', () => {
     const app = new Koa();
+
     app.use(async (ctx: koa.BaseContext, next) => {
       try {
         await next();
@@ -25,7 +26,7 @@ describe('koa-jsonapi-headers.test.js', () => {
       ctx.body = 'OK';
     });
 
-    test('missing Accept header', async () => {
+    test('missing Accept header', async (done) => {
       const response = await request(app.listen()).get('/').expect(400);
 
       const json = JSON.parse(response.text);
@@ -36,9 +37,11 @@ describe('koa-jsonapi-headers.test.js', () => {
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
       expect(json.errors[0].title).toEqual('API requires header "Accept application/vnd.api+json" for exchanging data.');
+
+      done();
     });
 
-    test('POST missing Content-type header', async () => {
+    test('POST missing Content-type header', async (done) => {
       const response = await request(app.listen())
         .post('/')
         .set('Accept', 'application/vnd.api+json')
@@ -53,9 +56,11 @@ describe('koa-jsonapi-headers.test.js', () => {
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
       expect(json.errors[0].title).toEqual('API requires header "Content-type application/vnd.api+json" for exchanging data.');
+
+      done();
     });
 
-    test('PUT missing Content-type header', async () => {
+    test('PUT missing Content-type header', async (done) => {
       const response = await request(app.listen())
       .put('/')
       .set('Accept', 'application/vnd.api+json')
@@ -70,9 +75,11 @@ describe('koa-jsonapi-headers.test.js', () => {
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
       expect(json.errors[0].title).toEqual('API requires header "Content-type application/vnd.api+json" for exchanging data.');
+
+      done();
     });
 
-    test('PATCH missing Content-type header', async () => {
+    test('PATCH missing Content-type header', async (done) => {
       const response = await request(app.listen())
       .patch('/')
       .set('Accept', 'application/vnd.api+json')
@@ -87,6 +94,8 @@ describe('koa-jsonapi-headers.test.js', () => {
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
       expect(json.errors[0].title).toEqual('API requires header "Content-type application/vnd.api+json" for exchanging data.');
+
+      done();
     });
   });
 });
