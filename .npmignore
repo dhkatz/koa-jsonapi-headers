@@ -2,7 +2,7 @@
 .gitignore
 .idea/
 .jshintrc
+.vscode/
 node_modules/
-test/
 log/
 examples/
