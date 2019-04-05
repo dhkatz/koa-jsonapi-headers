@@ -5,3 +5,134 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Fixed
+- Update the library to modern Javascript/Typescript
+- Update library dependencies to remove vulnerabilities
+
+### Changed
+- Change testing library to only use Jest
+
+### Added
+- Add gulp as a dev dependency for easy building and linting
+- Add bundled type definitions for the library
+
+## 1.1.3 - 2015-07-28
+
+### Added
+- Dependency updates.
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+## 1.1.1 - 2015-03-03
+
+### Added
+- Dependency updates.
+- Add iojs to package.json engines property
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+## 1.1.0 - 2014-11-06
+
+### Added
+- Validate accept header for all requests.
+- Validate content-type header for POST, PUT, PATCH only.
+- Readme updates.
+- Dev dependency updates.
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+## 1.0.0 - 2014-10-26
+
+### Added
+- Breaking change: http text response is now a collection of objects keyed by "errors"
+- Readme updates.
+- Dev dependency updates
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+## 0.0.4 - 2014-09-14
+
+### Added
+- Nothing.
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Readme usage errors.
+
+## 0.0.3 - 2014-09-14
+
+### Added
+- Add URL regular expression exclude list option
+- Readme updates.
+- Dev dependency updates
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+## 0.0.2 - 2014-09-14
+
+### Added
+- URL query string option 'jsonapiexclude=true' which will exclude JSON API header validations.
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
+
+## 0.0.1 - 2014-08-25
+
+### Added
+- Initial Commit
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
+
+### Fixed
+- Nothing.
