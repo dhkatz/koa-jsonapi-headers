@@ -25,15 +25,13 @@ export default function(options?: Options) {
 
     if (!ctx.header.accept || !/application\/vnd\.api\+json/.test(ctx.header.accept)) {
       ctx.throw(400, JSON.stringify({
-        message: {
-          errors: [
-            {
-              code: 'invalid_request',
-              status: 400,
-              title: 'API requires header "Accept application/vnd.api+json" for exchanging data.',
-            },
-          ],
-        },
+        errors: [
+          {
+            code: 'invalid_request',
+            status: 400,
+            title: 'API requires header \'Accept application/vnd.api+json\' for exchanging data.',
+          },
+        ],
       }));
     }
 
@@ -42,14 +40,12 @@ export default function(options?: Options) {
     if (/^(POST|PUT|PATCH)$/.test(ctx.method)) {
       if (!ctx.header['content-type'] || !/application\/vnd\.api\+json/.test(ctx.header['content-type'])) {
         ctx.throw(400, JSON.stringify({
-          message: {
-            errors: [
-              {
-                code: 'invalid_request',
-                title: 'API requires header "Content-type application/vnd.api+json" for exchanging data.',
-              },
-            ],
-          },
+          errors: [
+            {
+              code: 'invalid_request',
+              title: 'API requires header \'Content-type application/vnd.api+json\' for exchanging data.',
+            },
+          ],
         }));
       }
     }
