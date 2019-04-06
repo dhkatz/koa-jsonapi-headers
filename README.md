@@ -3,7 +3,7 @@ koa-jsonapi-headers
 
 KoaJS Validate JSON-API Request Headers Middleware
 
-[![Build Status](https://travis-ci.com/dhkatz/koa-jsonapi-headers.svg?branch=master)](https://travis-ci.org/dhkatz/koa-jsonapi-headers)  
+[![Build Status](https://travis-ci.com/dhkatz/koa-jsonapi-headers.svg?branch=develop)](https://travis-ci.com/dhkatz/koa-jsonapi-headers)
 [![Coverage Status](https://coveralls.io/repos/dhkatz/koa-jsonapi-headers/badge.png?branch=master)](https://coveralls.io/r/dhkatz/koa-jsonapi-headers?branch=master)  
 
 ## Overview
