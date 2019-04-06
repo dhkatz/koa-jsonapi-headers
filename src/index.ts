@@ -24,19 +24,17 @@ export default function(options?: Options) {
     }
 
     if (!ctx.header.accept || !/application\/vnd\.api\+json/.test(ctx.header.accept)) {
-      ctx.status = 400;
-      ctx.type = 'application/vnd.api+json';
-      ctx.body = {
-        errors: [
-          {
-            code: 'invalid_request',
-            status: 400,
-            title: 'API requires header "Accept application/vnd.api+json" for exchanging data.',
-          },
-        ],
-      };
-
-      ctx.app.emit('error', 'API requires header "Accept application/vnd.api+json" for exchanging data.', ctx);
+      ctx.throw(400, {
+        message: {
+          errors: [
+            {
+              code: 'invalid_request',
+              status: 400,
+              title: 'API requires header "Accept application/vnd.api+json" for exchanging data.',
+            },
+          ],
+        },
+      });
     }
 
     // Content-type: application/vnd.api+json
