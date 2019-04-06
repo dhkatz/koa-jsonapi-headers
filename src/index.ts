@@ -24,7 +24,7 @@ export default function(options?: Options) {
     }
 
     if (!ctx.header.accept || !/application\/vnd\.api\+json/.test(ctx.header.accept)) {
-      ctx.throw(400, {
+      ctx.throw(400, JSON.stringify({
         message: {
           errors: [
             {
@@ -34,14 +34,14 @@ export default function(options?: Options) {
             },
           ],
         },
-      });
+      }));
     }
 
     // Content-type: application/vnd.api+json
     // POST PUT and PATCH must have json-api HTTP content-type header
     if (/^(POST|PUT|PATCH)$/.test(ctx.method)) {
       if (!ctx.header['content-type'] || !/application\/vnd\.api\+json/.test(ctx.header['content-type'])) {
-        ctx.throw(400, {
+        ctx.throw(400, JSON.stringify({
           message: {
             errors: [
               {
@@ -50,7 +50,7 @@ export default function(options?: Options) {
               },
             ],
           },
-        });
+        }));
       }
     }
 
