@@ -14,7 +14,7 @@ describe('koa-jsonapi-headers.test.js', () => {
         await next();
       } catch (error) {
         ctx.status = error.status || 500;
-        ctx.body = error.message;
+        ctx.body = JSON.parse(error.message);
       }
     });
 
@@ -36,7 +36,7 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
-      expect(json.errors[0].title).toEqual('API requires header "Accept application/vnd.api+json" for exchanging data.');
+      expect(json.errors[0].title).toEqual('API requires header \'Accept application/vnd.api+json\' for exchanging data.');
 
       done();
     });
@@ -55,7 +55,7 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
-      expect(json.errors[0].title).toEqual('API requires header "Content-type application/vnd.api+json" for exchanging data.');
+      expect(json.errors[0].title).toEqual('API requires header \'Content-type application/vnd.api+json\' for exchanging data.');
 
       done();
     });
@@ -74,7 +74,7 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
-      expect(json.errors[0].title).toEqual('API requires header "Content-type application/vnd.api+json" for exchanging data.');
+      expect(json.errors[0].title).toEqual('API requires header \'Content-type application/vnd.api+json\' for exchanging data.');
 
       done();
     });
@@ -93,7 +93,7 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       expect(json.errors[0].code).toEqual('invalid_request');
       // tslint:disable-next-line:max-line-length
-      expect(json.errors[0].title).toEqual('API requires header "Content-type application/vnd.api+json" for exchanging data.');
+      expect(json.errors[0].title).toEqual('API requires header \'Content-type application/vnd.api+json\' for exchanging data.');
 
       done();
     });
@@ -108,7 +108,7 @@ describe('koa-jsonapi-headers.test.js', () => {
           await next();
         } catch (error) {
           ctx.status = error.status || 500;
-          ctx.body = error.message;
+          ctx.body = JSON.parse(error.message);
         }
       });
 
@@ -179,7 +179,7 @@ describe('koa-jsonapi-headers.test.js', () => {
           await next();
         } catch (error) {
           ctx.status = error.status || 500;
-          ctx.body = error.message;
+          ctx.body = JSON.parse(error.message);
         }
       });
 
@@ -208,7 +208,7 @@ describe('koa-jsonapi-headers.test.js', () => {
           await next();
         } catch (error) {
           ctx.status = error.status || 500;
-          ctx.body = error.message;
+          ctx.body = JSON.parse(error.message);
         }
       });
 

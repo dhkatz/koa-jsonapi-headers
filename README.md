@@ -40,7 +40,7 @@ Code review, suggestions and pull requests very much welcome - thanks!
 This middleware will throw a nested object in the application error like so:
 
 ```javascript
-this.throw(400, {
+ctx.throw(400, {
   message: {
     errors: [
       {
@@ -59,10 +59,10 @@ Therefore you need to use some application logging like [koa-json-logger](https:
 Here's an example using koa-json-logger:
 
 ```javascript	
-import * as logger from 'koa-json-logger';
+import logger from 'koa-pino-logger';
 import headers from 'koa-jsonapi-headers';
 
-app.use(logger({ jsonapi: true }));
+app.use(logger());
 app.use(headers());
 ```
 
