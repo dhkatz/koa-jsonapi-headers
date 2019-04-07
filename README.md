@@ -24,7 +24,7 @@ Validation failure will return HTTP `400 Bad Request` with the response text of 
       "errors": [
         {
           "code": "invalid_request",
-          "title": "API requires header \"Content-type application/vnd.api+json\" for exchanging data."
+          "title": "API requires header 'Content-type application/vnd.api+json' for exchanging data."
         }
       ]
     }
@@ -40,30 +40,14 @@ Code review, suggestions and pull requests very much welcome - thanks!
 This middleware will throw a nested object in the application error like so:
 
 ```javascript
-ctx.throw(400, {
-  message: {
+ctx.throw(400, JSON.stringify({
     errors: [
       {
         code: 'invalid_request',
-        title: 'API requires header "Content-type application/vnd.api+json" for exchanging data.'
-      }
-    ]
-  }
-});
-```
-
-It's designed this way so that the application logging will log the entire JSON response and then rethrow the JSON error message.
-
-Therefore you need to use some application logging like [koa-json-logger](https://github.com/rudijs/koa-json-logger) or catch and rethrow the error yourself.
-
-Here's an example using koa-json-logger:
-
-```javascript	
-import logger from 'koa-pino-logger';
-import headers from 'koa-jsonapi-headers';
-
-app.use(logger());
-app.use(headers());
+        title: 'API requires header \'Content-type application/vnd.api+json\' for exchanging data.'
+      },
+    ],
+}));
 ```
 
 Here's an example of manual catch and re-throw:
@@ -73,13 +57,12 @@ import headers from 'koa-jsonapi-headers';
 app.use(async (ctx, next) => {
   try {
     await next();
-  }
-  catch (err) {
+  } catch (err) {
     ctx.status = err.status || 500;
-    ctx.body = err.message;
+    ctx.body = JSON.parse(err.message);
   }
 
-  ctx.response.type = 'application/vnd.api+json';
+  ctx.type = 'application/vnd.api+json';
 });
 
 app.use(headers());
