@@ -46,7 +46,7 @@
     "@types/koa": "^2.0.48",
     "@types/supertest": "^2.0.7",
     "coveralls": "^3.0.3",
-    "del": "^4.1.0",
+    "del": "^5.0.0",
     "gulp": "^4.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-tslint": "^8.1.4",
