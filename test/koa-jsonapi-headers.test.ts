@@ -1,5 +1,5 @@
-import * as Koa from 'koa';
-import * as request from 'supertest';
+import Koa from 'koa';
+import request from 'supertest';
 
 import headers from '../src';
 
@@ -62,10 +62,10 @@ describe('koa-jsonapi-headers.test.js', () => {
 
     test('PUT', async (done) => {
       const response = await request(app.listen())
-      .put('/')
-      .set('Accept', 'application/vnd.api+json')
-      .send({})
-      .expect(400);
+        .put('/')
+        .set('Accept', 'application/vnd.api+json')
+        .send({})
+        .expect(400);
 
       const json = JSON.parse(response.text);
 
@@ -81,10 +81,10 @@ describe('koa-jsonapi-headers.test.js', () => {
 
     test('PATCH', async (done) => {
       const response = await request(app.listen())
-      .patch('/')
-      .set('Accept', 'application/vnd.api+json')
-      .send({})
-      .expect(400);
+        .patch('/')
+        .set('Accept', 'application/vnd.api+json')
+        .send({})
+        .expect(400);
 
       const json = JSON.parse(response.text);
 
@@ -122,9 +122,9 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       test('GET', async (done) => {
         const response = await request(app.listen())
-        .get('/')
-        .set('Accept', 'application/vnd.api+json')
-        .expect(200);
+          .get('/')
+          .set('Accept', 'application/vnd.api+json')
+          .expect(200);
 
         expect(response.text).toEqual('Correct headers found');
 
@@ -133,11 +133,11 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       test('POST', async (done) => {
         const response = await request(app.listen())
-        .post('/')
-        .set('Accept', 'application/vnd.api+json')
-        .set('Content-type', 'application/vnd.api+json')
-        .send('name=test')
-        .expect(200);
+          .post('/')
+          .set('Accept', 'application/vnd.api+json')
+          .set('Content-type', 'application/vnd.api+json')
+          .send('name=test')
+          .expect(200);
 
         expect(response.text).toEqual('Correct headers found');
 
@@ -146,11 +146,11 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       test('PUT', async (done) => {
         const response = await request(app.listen())
-        .put('/')
-        .set('Accept', 'application/vnd.api+json')
-        .set('Content-type', 'application/vnd.api+json')
-        .send('name=test')
-        .expect(200);
+          .put('/')
+          .set('Accept', 'application/vnd.api+json')
+          .set('Content-type', 'application/vnd.api+json')
+          .send('name=test')
+          .expect(200);
 
         expect(response.text).toEqual('Correct headers found');
 
@@ -159,11 +159,11 @@ describe('koa-jsonapi-headers.test.js', () => {
 
       test('PATCH', async (done) => {
         const response = await request(app.listen())
-        .patch('/')
-        .set('Accept', 'application/vnd.api+json')
-        .set('Content-type', 'application/vnd.api+json')
-        .send('name=test')
-        .expect(200);
+          .patch('/')
+          .set('Accept', 'application/vnd.api+json')
+          .set('Content-type', 'application/vnd.api+json')
+          .send('name=test')
+          .expect(200);
 
         expect(response.text).toEqual('Correct headers found');
 
@@ -192,8 +192,8 @@ describe('koa-jsonapi-headers.test.js', () => {
       });
 
       const response = await request(app.listen())
-      .get('/?jsonapiexclude=true')
-      .expect(200);
+        .get('/?jsonapiexclude=true')
+        .expect(200);
 
       expect(response.text).toEqual('Excluded headers request OK');
 
@@ -228,8 +228,8 @@ describe('koa-jsonapi-headers.test.js', () => {
       });
 
       const response = await request(app.listen())
-      .get('/excluded/endpoint?id=1')
-      .expect(200);
+        .get('/excluded/endpoint?id=1')
+        .expect(200);
 
       expect(response.text).toEqual('Excluded headers request OK');
 

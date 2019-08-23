@@ -1,6 +1,6 @@
 {
   "name": "koa-jsonapi-headers",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "KoaJS Validate JSON-API Request Headers Middleware",
   "repository": {
     "type": "git",
@@ -9,26 +9,37 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "jest --verbose --forceExit --detectOpenHandles",
-    "build": "gulp",
     "prepublishOnly": "gulp build",
-    "coveralls": "jest --coverage --ci --verbose --forceExit --detectOpenHandles && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "tsc",
+    "lint": "eslint src/**/* && tsc --noEmit",
+    "test": "jest --ci --verbose --forceExit --detectOpenHandles",
+    "test:coverage": "jest --coverage --ci",
+    "coverage": "./node_modules/.bin/jest --coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "jest": {
-    "roots": [
-      "<rootDir>/test/"
-    ],
+    "collectCoverage": true,
     "transform": {
-      "^.+\\.tsx?$": "ts-jest"
+      ".(ts|tsx)": "ts-jest"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
+      "js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverageFrom": [
+      "src/*.{js,ts}"
     ]
   },
   "keywords": [
@@ -46,17 +57,11 @@
     "@types/koa": "^2.0.48",
     "@types/supertest": "^2.0.7",
     "coveralls": "^3.0.3",
-    "del": "^5.0.0",
-    "gulp": "^4.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-tslint": "^8.1.4",
-    "gulp-typescript": "^5.0.1",
     "jest": "^24.7.1",
     "koa": "^2.7.0",
     "merge2": "^1.2.3",
     "supertest": "^4.0.2",
-    "ts-jest": "^24.0.1",
-    "ts-node": "^8.0.3",
+    "ts-jest": "^24.0.2",
     "tslint": "^5.15.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.4.1"
