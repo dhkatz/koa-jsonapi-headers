@@ -7,4 +7,4 @@ before_script:
   - npm install -D
 script:
   - npm run build
-  - npm run coveralls
+  - npm run coverage
