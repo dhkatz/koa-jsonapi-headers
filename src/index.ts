@@ -9,10 +9,10 @@ export interface Options {
  * Add JSON API compliant headers to Koa.
  * @param options Customization options for handling requests.
  */
-export default function(options?: Options) {
+export default function (options?: Options) {
   const patterns = options && options.exclude ? options.exclude.map((value: string) => new RegExp(value)) : [];
 
-  return async function headers(ctx: koa.Context, next) {
+  return async function headers(ctx: koa.Context, next: Function) {
     const exclude = ctx.query.jsonapiexclude || false;
 
     if (exclude) {

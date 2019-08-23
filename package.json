@@ -7,7 +7,7 @@
     "url": "https://github.com/dhkatz/koa-jsonapi-headers.git"
   },
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "./typings/index.d.ts",
   "scripts": {
     "prepublishOnly": "gulp build",
     "build": "npm run build:types && npm run build:js",
@@ -25,10 +25,6 @@
     },
     "testEnvironment": "node",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/lib/"
-    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -43,7 +39,7 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/*.{ts,js}"
     ]
   },
   "keywords": [

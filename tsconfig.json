@@ -1,12 +1,29 @@
 {
   "compilerOptions": {
+    /* Module/Target Options */
     "target": "es6",
     "module": "commonjs",
+    "inlineSourceMap": true,
+    "declaration": true,
+    "outDir": "./lib",
+    "declarationDir": "./typings",
+    /* Strict Type-Checking Options */
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    /* Basic Options */
+    "importHelpers": true,
+    /* Extra Options */
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-
-    "declaration": true
+    "rootDir": "./src",
+    "baseUrl": "."
   },
   "include": [
-    "src/**/*.ts"
+    "src"
+  ],
+  "exclude": [
+    "lib",
+    "node_modules",
   ]
 }
