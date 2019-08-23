@@ -16,7 +16,7 @@
     "lint": "eslint src/**/* && tsc --noEmit",
     "test": "jest --ci --verbose --forceExit --detectOpenHandles",
     "test:coverage": "jest --coverage --ci",
-    "coverage": "./node_modules/.bin/jest --ci --coverage --detectOpenHandles && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coverage": "./node_modules/.bin/jest --ci --verbose --forceExit --coverage --detectOpenHandles && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "jest": {
     "collectCoverage": true,
