@@ -61,7 +61,7 @@
     "koa": "^2.7.0",
     "merge2": "^1.2.3",
     "supertest": "^4.0.2",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^26.5.5",
     "tslint": "^5.15.0",
     "tslint-eslint-rules": "^5.4.0",
     "typescript": "^3.4.1"
